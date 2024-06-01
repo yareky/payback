@@ -9,9 +9,12 @@ java {
 }
 
 dependencies {
+    implementation(project(":domain"))
     implementation(libs.koin.core)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
-    implementation(project(":domain"))
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
 }

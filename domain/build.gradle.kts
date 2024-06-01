@@ -10,4 +10,7 @@ java {
 
 dependencies {
     implementation(libs.koin.core)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
 }

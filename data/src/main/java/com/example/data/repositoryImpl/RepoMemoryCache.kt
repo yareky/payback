@@ -6,9 +6,10 @@ import com.example.domain.model.SearchImagesResponse
 import com.example.domain.model.Status
 import com.example.domain.repository.IRepoCache
 
-class RepoMemoryCache : IRepoCache {
-    private val hitsMap = mutableMapOf<Long, Hit>()
-    private val queryMap = mutableMapOf<String, List<Long>>()
+class RepoMemoryCache(
+    private val hitsMap: MutableMap<Long, Hit> = mutableMapOf(),
+    private val queryMap: MutableMap<String, List<Long>> = mutableMapOf()
+) : IRepoCache {
 
     override suspend fun putImages(hits: List<Hit>) =
         hitsMap.putAll(hits.associateBy { it.id })
