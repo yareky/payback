@@ -2,26 +2,28 @@ package com.example.data.mapper
 
 import com.example.data.model.Hit
 import com.example.data.model.SearchImagesResponse
+import com.example.domain.model.Hit as HitDomain
+import com.example.domain.model.SearchImagesResponse as SearchImagesResponseDomain
 
-internal fun SearchImagesResponse?.toDomainWithException(): com.example.domain.model.SearchImagesResponse {
+internal fun SearchImagesResponse?.toDomainWithException(): SearchImagesResponseDomain {
     requireNotNull(this)
-    return com.example.domain.model.SearchImagesResponse(
+    return SearchImagesResponseDomain(
         hits = hits.toDomainWithException(),
         total = total,
         totalHits = totalHits,
     )
 }
 
-internal fun List<Hit>?.toDomainWithException(): List<com.example.domain.model.Hit> {
+internal fun List<Hit>?.toDomainWithException(): List<HitDomain> {
     requireNotNull(this)
     return map {
         it.toDomainWithException()
     }
 }
 
-internal fun Hit?.toDomainWithException(): com.example.domain.model.Hit {
+internal fun Hit?.toDomainWithException(): HitDomain {
     requireNotNull(this)
-    return com.example.domain.model.Hit(
+    return HitDomain(
         comments = comments,
         downloads = downloads,
         id = id,

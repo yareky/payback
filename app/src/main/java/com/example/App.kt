@@ -1,6 +1,9 @@
 package com.example
 
 import android.app.Application
+import com.example.data.di.moduleApi
+import com.example.data.di.moduleServices
+import com.example.domain.di.moduleUseCases
 import com.example.payback.view.di.moduleApp
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -16,8 +19,8 @@ class App : Application() {
             androidLogger()
             androidContext(this@App)
             modules(
-                com.example.data.di.moduleApi,
-                com.example.data.di.moduleServices, com.example.domain.di.moduleUseCases, moduleApp
+                moduleApi,
+                moduleServices, moduleUseCases, moduleApp
             )
         }
     }

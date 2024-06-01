@@ -18,6 +18,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.example.domain.model.Hit
+import com.example.domain.model.Status
 import com.example.payback.R
 import com.example.payback.view.viewmodel.ViewModelDetails
 import org.koin.androidx.compose.koinViewModel
@@ -28,8 +30,8 @@ fun LayoutDetails(
     hitId: Long,
     viewModel: ViewModelDetails = koinViewModel()
 ) {
-    val hit: com.example.domain.model.Status<com.example.domain.model.Hit> by viewModel.hit.collectAsState(
-        com.example.domain.model.Status.EMPTY
+    val hit: Status<Hit> by viewModel.hit.collectAsState(
+        Status.EMPTY
     )
     LaunchedEffect(true) {
         viewModel.getImage(hitId)
@@ -40,15 +42,15 @@ fun LayoutDetails(
 }
 
 @Composable
-fun HitCardDetailedStatus(hit: com.example.domain.model.Status<com.example.domain.model.Hit>) {
+fun HitCardDetailedStatus(hit: Status<Hit>) {
     when (hit) {
-        is com.example.domain.model.Status.SUCCESS -> HitCardDetailed(hit.value)
+        is Status.SUCCESS -> HitCardDetailed(hit.value)
         else -> Unit
     }
 }
 
 @Composable
-fun HitCardDetailed(hit: com.example.domain.model.Hit) {
+fun HitCardDetailed(hit: Hit) {
     Card(
 
         modifier = Modifier
@@ -78,7 +80,7 @@ fun HitCardDetailed(hit: com.example.domain.model.Hit) {
 @Composable
 fun HitCardDetailedPreview() {
     HitCardDetailed(
-        com.example.domain.model.Hit(
+        Hit(
             user = "",
             tags = "",
             previewUrl = "",

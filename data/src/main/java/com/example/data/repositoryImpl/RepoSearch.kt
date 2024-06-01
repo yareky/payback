@@ -3,30 +3,35 @@ package com.example.data.repositoryImpl
 import com.example.data.api.ApiPixBay
 import com.example.data.extension.toResult
 import com.example.data.mapper.toDomainWithException
+import com.example.domain.model.Hit
+import com.example.domain.model.Result
+import com.example.domain.model.SearchImagesResponse
+import com.example.domain.model.Status
+import com.example.domain.repository.IRepoSearch
 import java.net.URLEncoder
 
 internal class RepoSearch(private val apiPixBay: ApiPixBay) :
-    com.example.domain.repository.IRepoSearch {
+    IRepoSearch {
 
-    override suspend fun searchImages(query: String): com.example.domain.model.Result<com.example.domain.model.SearchImagesResponse> {
+    override suspend fun searchImages(query: String): Result<SearchImagesResponse> {
         return try {
             apiPixBay.searchImages(URLEncoder.encode(query, ENCODER)).toResult {
-                com.example.domain.model.Status.SUCCESS(it.toDomainWithException())
+                Status.SUCCESS(it.toDomainWithException())
             }
         } catch (exception: Exception) {
-            com.example.domain.model.Status.ERROR(exception)
+            Status.ERROR(exception)
         }
     }
 
-    override suspend fun searchImage(imageId: Long): com.example.domain.model.Result<com.example.domain.model.Hit> {
+    override suspend fun searchImage(imageId: Long): Result<Hit> {
         return try {
             apiPixBay.searchImage(imageId).toResult {
-                com.example.domain.model.Status.SUCCESS(
+                Status.SUCCESS(
                     it?.hits?.firstOrNull().toDomainWithException()
                 )
             }
         } catch (exception: Exception) {
-            com.example.domain.model.Status.ERROR(exception)
+            Status.ERROR(exception)
         }
     }
 

@@ -14,11 +14,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.example.domain.model.Hit
 import com.example.payback.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HitCard(hit: com.example.domain.model.Hit, onClick: (com.example.domain.model.Hit) -> Unit) {
+fun HitCard(hit: Hit, onClick: (Hit) -> Unit) {
     Card(modifier = Modifier
         .padding(8.dp)
         .fillMaxWidth(), onClick = { onClick(hit) }) {
