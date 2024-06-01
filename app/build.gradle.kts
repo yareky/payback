@@ -66,6 +66,8 @@ dependencies {
     implementation(libs.timber)
     implementation(libs.coil)
     implementation(libs.androidx.navigation.compose)
+    implementation(project(":domain"))
+    implementation(project(":data"))
     testImplementation(libs.junit)
     testImplementation(libs.mockk)
     androidTestImplementation(libs.androidx.junit)

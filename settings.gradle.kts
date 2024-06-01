@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "PayBack"
 include(":app")
- 
+include(":domain")
+include(":data")
