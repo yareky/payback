@@ -6,4 +6,6 @@
     <string name="downloads">Downloads: %1$s</string>
     <string name="tags">Tags: %1$s</string>
     <string name="search_query">Search query</string>
+    <string name="do_you_want_to_open">Do you want to open?</string>
+    <string name="yes">Yes</string>
 </resources>
