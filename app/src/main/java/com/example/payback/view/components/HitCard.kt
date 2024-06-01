@@ -33,7 +33,6 @@ fun HitCard(hit: Hit, onClick: (Hit) -> Unit) {
             )
             Column(modifier = Modifier.padding(8.dp)) {
                 Text(text = stringResource(R.string.user, hit.user))
-                Text(text = stringResource(R.string.comments, hit.comments))
                 Text(text = stringResource(R.string.tags, hit.tags))
             }
         }
