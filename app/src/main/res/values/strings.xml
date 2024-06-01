@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PayBack</string>
+    <string name="user">User: %1$s</string>
+    <string name="comments">Comments: %1$s</string>
+    <string name="likes">Likes: %1$s</string>
+    <string name="downloads">Downloads: %1$s</string>
+    <string name="tags">Tags: %1$s</string>
+    <string name="search_query">Search query</string>
+</resources>
